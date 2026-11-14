@@ -1,0 +1,23 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Manim media output (rendered videos, images, cached TeX builds)
+media/
+
+# Environment & local settings
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# Editor / IDE local configs
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
