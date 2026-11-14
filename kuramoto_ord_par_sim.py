@@ -1,13 +1,5 @@
 # %%
 import numpy as np
-import time
-from scipy.integrate import solve_ivp
-
-#timing
-start_time = time.perf_counter()
-
-# %%
-import numpy as np
 from scipy.integrate import solve_ivp
 from manim import Axes, BLUE, Create, Scene, WHITE
 
@@ -16,6 +8,7 @@ def kuramoto_oa_ode(
     t: float, r: np.ndarray, k_coupling: float, gamma: float
 ) -> np.ndarray:
     """Right-hand side of the infinite-N Ott-Antonsen Kuramoto ODE."""
+    # Evaluate dr/dt = (K/2 - gamma)*r - (K/2)*r^3
     return (0.5 * k_coupling - gamma) * r - 0.5 * k_coupling * (r**3)
 
 
@@ -27,6 +20,7 @@ def solve_order_parameter(
     num_steps: int = 50,
 ) -> tuple[np.ndarray, np.ndarray]:
     """Integrate r(t) over [0, t_max] on a discrete time grid."""
+    # Generate evenly spaced evaluation time points and integrate via RK45
     t_eval = np.linspace(0.0, t_max, num_steps)
     solution = solve_ivp(
         fun=kuramoto_oa_ode,
@@ -74,10 +68,5 @@ class InfiniteKuramotoOrderParameter(Scene):
         )
 
         self.add(axes, labels)
-        self.play(Create(graph), run_time=3.0)
-        self.wait(1.0)
-
-print("kurakura")
-
-end_time = time.perf_counter()
-print(f"Elapsed time: {end_time - start_time:.4f} seconds")
+        self.play(Create(graph), run_time=5.0)
+        self.wait(2.0)
