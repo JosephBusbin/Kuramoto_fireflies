@@ -33,16 +33,17 @@ def solve_order_parameter(
     return solution.t, solution.y[0]
 
 
-class InfiniteKuramotoOrderParameter(Scene):
-    """Animate the time evolution of r(t) in the first quadrant."""
-
+class InfiniteKuramotoOrderParameter(Scene): # Incoherent -> Coherent
+    """Animate the time evolution of r(t) in the first quadrant. Starting from incoherence under high coupling."""
+    # build the animation
     def construct(self) -> None:
+        # set values for the solving of the order parameter and solve it
         k_coupling = 4.0
-        gamma = 1.0
+        gamma = 1.5
         r0 = 0.05
         t_max = 10.0
 
-        t_vals, r_vals = solve_order_parameter(
+        t_vals, r_vals = solve_order_parameter( # returns a tuples of values for the t and r to plot
             k_coupling=k_coupling,
             gamma=gamma,
             r0=r0,
@@ -50,9 +51,50 @@ class InfiniteKuramotoOrderParameter(Scene):
             num_steps=50,
         )
 
+        # set the axis for our graph
         axes = Axes(
             x_range=[0, t_max, 2],
             y_range=[0, 1.0, 0.2],
+            x_length=9,
+            y_length=5,
+            axis_config={"include_numbers": True, "color": WHITE},
+            tips=False,
+        )
+        labels = axes.get_axis_labels(x_label="t", y_label="r(t)") #label the axes
+
+        # instatiate the graph object add add out x,y and visual specificaitons
+        graph = axes.plot_line_graph(
+            x_values=t_vals,
+            y_values=r_vals,
+            line_color=BLUE,
+            add_vertex_dots=False,
+        )
+
+        # add to the self animation object our axes, labels, and play the construction of the graph
+        self.add(axes, labels)
+        self.play(Create(graph), run_time=5.0)
+        self.wait(2.0) #hold at the end for two seconds
+
+class InfiniteKuramotoOrderParameterIncoherence(Scene): # Coherent -> Incoherent
+    """Animate the time evolution of r(t) in the first quadrant. Starting from coherence under low coupling."""
+
+    def construct(self) -> None:
+        k_coupling = 0.5
+        gamma = 1.5
+        r0  = 0.95
+        t_max = 10.0
+
+        t_vals, r_vals = solve_order_parameter(
+            k_coupling=k_coupling,
+            gamma=gamma,
+            r0=r0,
+            t_max=t_max,
+            num_steps=50
+        )
+
+        axes = Axes(
+            x_range=[0, t_max, 2],
+            y_range=[0, 1, 0.2],
             x_length=9,
             y_length=5,
             axis_config={"include_numbers": True, "color": WHITE},
@@ -67,6 +109,6 @@ class InfiniteKuramotoOrderParameter(Scene):
             add_vertex_dots=False,
         )
 
-        self.add(axes, labels)
+        self.add(axes,labels)
         self.play(Create(graph), run_time=5.0)
         self.wait(2.0)

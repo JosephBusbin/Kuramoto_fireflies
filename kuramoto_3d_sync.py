@@ -69,7 +69,7 @@ class Kuramoto3DSynchronization(ThreeDScene):
     def construct(self) -> None:
         # 1. Define simulation and animation parameters
         n_total = 1000
-        n_sample = 45
+        n_sample = 35
         t_max = 20.0
         num_steps = 400
         anim_run_time = 20.0
