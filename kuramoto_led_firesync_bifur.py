@@ -166,9 +166,8 @@ def sweep_firesync_coupling(
     return k_vals, r_steady
 
 
-# =========================================================================
-# 3. First-Quadrant Manim Bifurcation Scene
-# =========================================================================
+
+# Construct the Manim Bifurcation Scene in Q1
 
 class LedFiresyncBifurcation(Scene):
     """Animate the r vs. K transition for N=100 oscillators using prc_simulator.py."""

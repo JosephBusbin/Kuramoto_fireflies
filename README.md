@@ -1,4 +1,3 @@
-```markdown
 # Kuramoto_fireflies
 A project stemming from Nonlinear Dynamics that investigates some aspects of using the kuramoto model to represent the synchronization of firefly bioluminescence.
 
@@ -45,8 +44,8 @@ Because all four scripts share the same modular solver architecture, you can adj
 
 * **`k_coupling` ($K$) / `k_max`:** The coupling strength between oscillators. Increasing $K$ past the critical threshold $K_c$ triggers a phase transition from random incoherence ($r \approx 0$) to collective synchronization ($r \to 1$).
 * **`gamma` ($\gamma$):** The half-width at half-maximum of the Lorentzian (Cauchy) natural frequency distribution used in the $N \to \infty$ models. Sets the critical threshold at $K_c = 2\gamma$.
-* **`omega_mean` ($\omega_0$) & `omega_std` ($\sigma$):** The mean and standard deviation of the Gaussian natural frequency distribution $\mathcal{N}(\omega_0, \sigma^2)$ used in the finite-$N$ simulations. Larger `omega_std` means more unruly oscillators that require a stronger $K$ to lock.
-* **`r0` ($r_0$):** The initial macroscopic order parameter in the infinite-$N$ ODE ($0 < r_0 \le 1$). Must be strictly greater than $0$ so the solver isn't trapped on the unstable $r = 0$ equilibrium above $K_c$.
+* **`omega_mean` ($\omega_0$) & `omega_std` ($\sigma$):** The mean and standard deviation of the Gaussian natural frequency distribution $\mathcal{N}(\omega_0, \sigma^2)$ used in the finite $N$ simulations. Larger `omega_std` means more unruly oscillators that require a stronger $K$ to lock.
+* **`r0` ($r_0$):** The initial macroscopic order parameter in the infinite $N$ ODE ($0 < r_0 \le 1$). Must be strictly greater than $0$ so the solver isn't trapped on the unstable $r = 0$ equilibrium above $K_c$.
 * **`n_total` / `n_oscillators` ($N$) & `n_sample` ($M$):** Total number of simulated oscillators in the ensemble and the smaller subset extracted for 3D rendering.
 * **`t_max` & `num_steps`:** The total simulation time horizon and the number of discrete time snapshots passed to Manim.
 
@@ -54,7 +53,7 @@ Because all four scripts share the same modular solver architecture, you can adj
 
 ## The 4 Simulations
 
-### 1. Infinite-$N$ Order Parameter Over Time (`kuramoto_ord_par_sim.py`)
+### 1. Infinite $N$ Order Parameter Over Time (`kuramoto_ord_par_sim.py`)
 
 * **What it shows:** Plots two scenes. First the time evolution of the macroscopic coherence $r(t)$ in the first quadrant as an infinite population of oscillators transitions from near-incoherence ($r_0 = 0.05$) to a locked steady state. The second is the has modified parameters to start at an initially synchronized population ($r_0 = 0.95$) and see it decay back to zero via linear Landau damping.  
 * **The Approach:** Uses the **Ott–Antonsen (2008) ansatz** for a Lorentzian frequency distribution, which collapses the infinite-dimensional continuity PDE into a single exact scalar ODE: $\dot{r} = (\frac{K}{2} - \gamma)r - \frac{K}{2}r^3$.
@@ -84,7 +83,7 @@ manim -pqh kuramoto_3d_sync.py Kuramoto3DSynchronization
 * **Play around with this:** Adjust `omega_mean` to speed up or slow down the overall flashing cadence, or lower `k_coupling` to `0.5` (below $K_c \approx 1.28$) to see the spheres flash out of sync indefinitely.
 
 
-### 3. Infinite-$N$ Pitchfork Bifurcation Diagram (`kuramoto_bifurcation.py`)
+### 3. Infinite $N$ Pitchfork Bifurcation Diagram (`kuramoto_bifurcation.py`)
 
 * **What it shows:** Draws the classic steady-state phase transition curve ($r_\infty$ vs. $K$) with a dashed red marker at the critical threshold $K_c = 2\gamma$.
 * **The Approach:** Reuses `kuramoto_oa_ode` and `solve_order_parameter` from Simulation 1 inside a parameter sweep (`sweep_coupling_strength`). For each $K \in [0, 6]$, it integrates the ODE out to $t_{\max} = 120$ (long enough to overcome critical slowing down right near $K_c$) and records the final converged value `r_trajectory[-1]`.
