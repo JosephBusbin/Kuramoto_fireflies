@@ -1,0 +1,333 @@
+### Attribution of External Code & Major Contributors
+* **Third-Party Empirical PRC Code (`peleg-lab/led_firesync`):** The empirical firefly Phase Response Curve (PRC) mathematical formulation and helper functions (`wrap1`, `wrap_half`, `_alpha`, `R_tanh_step`, `Z_from_R`, and `make_tanh_prc`) used in `kuramoto_led_firesync_bifurcation.py` are **not original to this project**. They were taken directly from `simulation/prc_simulator.py` in the [`peleg-lab/led_firesync`](https://github.com/peleg-lab/led_firesync/blob/master/simulation/prc_simulator.py) GitHub repository developed by **Owen Martin, Nataliya Nechyporenko, Kaushik Jayaram, and Orit Peleg** (University of Colorado Boulder) as part of their study *Excitation–inhibition interactions mediate firefly flash synchronization* (Martin et al., 2026). Our contribution in `kuramoto_led_firesync_bifurcation.py` is limited to wrapping their empirical PRC factory into a vectorized $N = 100$ continuous-time ODE ensemble solver (`scipy.integrate.solve_ivp`) and rendering the resulting coupling sweep in Manim.
+* **Theoretical & Pedagogical Foundation (Steven H. Strogatz):** The conceptual structure, bifurcation analysis, and undergraduate dynamical systems framing throughout this project rely heavily on **Steven H. Strogatz's** textbook *Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering* (3rd ed., 2024, CRC Press) and his foundational review *From Kuramoto to Crawford* (2000).
+* **Visualization & Numerical Software (Manim Community & SciPy):** All mathematical animations and 3D phase-locking visualizations were rendered using **Manim** (Mathematical Animation Framework), developed and maintained by **The Manim Community Developers** (2026). Numerical integration of ordinary differential equations was performed using **SciPy** (`scipy.integrate.solve_ivp`, Virtanen et al., 2020).
+
+```bibtex
+% =========================================================================
+% A. Major Pedagogical, Software, & External Repository Contributors
+% =========================================================================
+
+@book{strogatz2024book,
+  title={Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering},
+  author={Strogatz, Steven H.},
+  edition={3rd},
+  year={2024},
+  publisher={CRC Press},
+  address={Boca Raton, FL},
+  isbn={978-0367026509},
+  url={https://doi.org/10.1201/9780429398490}
+}
+
+@incollection{strogatz2024kuramoto,
+  title={The {K}uramoto Model},
+  author={Strogatz, Steven H.},
+  booktitle={Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering},
+  edition={3rd},
+  pages={497--520},
+  year={2024},
+  publisher={CRC Press},
+  address={Boca Raton, FL}
+}
+
+@manual{manim2026,
+  title={Manim -- Mathematical Animation Framework (Version v0.22.0)},
+  author={{The Manim Community Developers}},
+  year={2026},
+  url={https://www.manim.community/}
+}
+
+@article{virtanen2020scipy,
+  title={{SciPy} 1.0: Fundamental Algorithms for Scientific Computing in {P}ython},
+  author={Virtanen, Pauli and Gommers, Ralf and Oliphant, Travis E. and Haberland, Matt and Reddy, Tyler and Cournapeau, David and Burovski, Evgeni and Peterson, Pearu and Weckesser, Warren and Bright, Jonathan and others},
+  journal={Nature Methods},
+  volume={17},
+  number={3},
+  pages={261--272},
+  year={2020},
+  doi={10.1038/s41592-019-0686-2},
+  url={https://doi.org/10.1038/s41592-019-0686-2}
+}
+
+@article{martin2026firefly,
+  title={Excitation--inhibition interactions mediate firefly flash synchronization},
+  author={Martin, Owen and Nechyporenko, Nataliya and Jayaram, Kaushik and Peleg, Orit},
+  journal={bioRxiv},
+  year={2026},
+  publisher={Cold Spring Harbor Laboratory},
+  doi={10.64898/2026.01.19.700439},
+  url={https://www.biorxiv.org/content/10.64898/2026.01.19.700439v1}
+}
+
+@misc{peleglab2026ledfiresync,
+  title={{led\_firesync}: Simulation and analysis code for firefly phase response curve experiments (\texttt{simulation/prc\_simulator.py})},
+  author={Martin, Owen and Nechyporenko, Nataliya and Jayaram, Kaushik and Peleg, Orit},
+  year={2026},
+  howpublished={GitHub repository, Peleg Lab, University of Colorado Boulder},
+  note={External source code directly adapted for the empirical tanh PRC functions},
+  url={https://github.com/peleg-lab/led_firesync/blob/master/simulation/prc_simulator.py}
+}
+
+% =========================================================================
+% B. Foundational Kuramoto Model & Biological Synchronization Literature
+% =========================================================================
+
+@article{buck1968fireflies,
+  title={Mechanism of rhythmic synchronous flashing of fireflies: Fireflies of {S}outheast {A}sia may use anticipatory time-measuring in synchronizing their flashing},
+  author={Buck, John and Buck, Elisabeth},
+  journal={Science},
+  volume={159},
+  number={3821},
+  pages={1319--1327},
+  year={1968},
+  doi={10.1126/science.159.3821.1319},
+  url={https://doi.org/10.1126/science.159.3821.1319}
+}
+
+@inproceedings{kuramoto1975,
+  title={Self-entrainment of a population of coupled non-linear oscillators},
+  author={Kuramoto, Yoshiki},
+  editor={Araki, Huzihiro},
+  booktitle={International Symposium on Mathematical Problems in Theoretical Physics},
+  series={Lecture Notes in Physics},
+  volume={39},
+  pages={420--422},
+  year={1975},
+  publisher={Springer-Verlag},
+  address={Berlin, Heidelberg},
+  doi={10.1007/BFb0013365},
+  url={https://doi.org/10.1007/BFb0013365}
+}
+
+@book{winfree1980,
+  title={The Geometry of Biological Time},
+  author={Winfree, Arthur T.},
+  series={Biomathematics},
+  volume={8},
+  year={1980},
+  publisher={Springer-Verlag},
+  address={New York},
+  doi={10.1007/978-3-662-22492-2},
+  url={https://doi.org/10.1007/978-3-662-22492-2}
+}
+
+@book{kuramoto1984,
+  title={Chemical Oscillations, Waves, and Turbulence},
+  author={Kuramoto, Yoshiki},
+  series={Springer Series in Synergetics},
+  volume={19},
+  year={1984},
+  publisher={Springer-Verlag},
+  address={Berlin, Heidelberg},
+  note={Dover Publications reprint, 2003},
+  doi={10.1007/978-3-642-69689-3},
+  url={https://doi.org/10.1007/978-3-642-69689-3}
+}
+
+@article{strogatz2000,
+  title={From {K}uramoto to {C}rawford: Exploring the onset of synchronization in populations of coupled oscillators},
+  author={Strogatz, Steven H.},
+  journal={Physica D: Nonlinear Phenomena},
+  volume={143},
+  number={1--4},
+  pages={1--20},
+  year={2000},
+  doi={10.1016/S0167-2789(00)00094-4},
+  url={https://doi.org/10.1016/S0167-2789(00)00094-4}
+}
+
+@article{acebron2005,
+  title={The {K}uramoto model: A simple paradigm for synchronization phenomena},
+  author={Acebr{\'o}n, Juan A. and Bonilla, Luis L. and P{\'e}rez Vicente, Conrad J. and Ritort, F{\'e}lix and Spigler, Renato},
+  journal={Reviews of Modern Physics},
+  volume={77},
+  number={1},
+  pages={137--185},
+  year={2005},
+  doi={10.1103/RevModPhys.77.137},
+  url={https://doi.org/10.1103/RevModPhys.77.137}
+}
+
+% =========================================================================
+% C. Analytic Stability, Continuum Limit, & Ott-Antonsen Reduction
+% =========================================================================
+
+@incollection{neunzert1984,
+  title={An introduction to the nonlinear {B}oltzmann--{V}lasov equation},
+  author={Neunzert, Helmut},
+  booktitle={Kinetic Theories and the Boltzmann Equation},
+  editor={Cercignani, Carlo},
+  series={Lecture Notes in Mathematics},
+  volume={1048},
+  pages={60--110},
+  year={1984},
+  publisher={Springer-Verlag},
+  address={Berlin, Heidelberg},
+  doi={10.1007/BFb0071878}
+}
+
+@book{spohn1991,
+  title={Large Scale Dynamics of Interacting Particles},
+  author={Spohn, Herbert},
+  series={Texts and Monographs in Physics},
+  year={1991},
+  publisher={Springer-Verlag},
+  address={Berlin, Heidelberg},
+  doi={10.1007/978-3-642-84371-6}
+}
+
+@article{strogatz1991,
+  title={Stability of incoherence in a population of coupled oscillators},
+  author={Strogatz, Steven H. and Mirollo, Renato E.},
+  journal={Journal of Statistical Physics},
+  volume={63},
+  number={3--4},
+  pages={613--635},
+  year={1991},
+  doi={10.1007/BF01029202}
+}
+
+@article{strogatz1992,
+  title={Coupled nonlinear oscillators below the synchronization threshold: Relaxation by generalized {L}andau damping},
+  author={Strogatz, Steven H. and Mirollo, Renato E. and Matthews, Paul C.},
+  journal={Physical Review Letters},
+  volume={68},
+  number={18},
+  pages={2730--2733},
+  year={1992},
+  doi={10.1103/PhysRevLett.68.2730}
+}
+
+@article{bonilla1992,
+  title={Nonlinear stability of incoherence and collective synchronization in a population of coupled oscillators},
+  author={Bonilla, Luis L. and Neu, John C. and Spigler, Renato},
+  journal={Journal of Statistical Physics},
+  volume={67},
+  number={1--2},
+  pages={313--330},
+  year={1992},
+  doi={10.1007/BF01049037}
+}
+
+@article{crawford1994,
+  title={Amplitude expansions for instabilities in populations of globally-coupled oscillators},
+  author={Crawford, John David},
+  journal={Journal of Statistical Physics},
+  volume={74},
+  number={5--6},
+  pages={1047--1084},
+  year={1994},
+  doi={10.1007/BF02188217}
+}
+
+@article{acebron1998,
+  title={Breaking the symmetry in bimodal frequency distributions of globally coupled oscillators},
+  author={Acebr{\'o}n, Juan A. and Bonilla, Luis L. and De Leo, Stefano and Spigler, Renato},
+  journal={Physical Review E},
+  volume={57},
+  number={5},
+  pages={5287--5290},
+  year={1998},
+  doi={10.1103/PhysRevE.57.5287}
+}
+
+@article{crawford1999,
+  title={Synchronization of globally coupled phase oscillators: Singularities and scaling for general couplings},
+  author={Crawford, John David and Davies, K. T. R.},
+  journal={Physica D: Nonlinear Phenomena},
+  volume={125},
+  number={1--2},
+  pages={1--46},
+  year={1999},
+  doi={10.1016/S0167-2789(98)00235-8}
+}
+
+@article{acebron2000,
+  title={Synchronization in populations of globally coupled oscillators with inertial effects},
+  author={Acebr{\'o}n, Juan A. and Bonilla, Luis L. and Spigler, Renato},
+  journal={Physical Review E},
+  volume={62},
+  number={3},
+  pages={3437--3454},
+  year={2000},
+  doi={10.1103/PhysRevE.62.3437}
+}
+
+@article{balmforth2000,
+  title={A shocking display of synchrony},
+  author={Balmforth, Neil J. and Sassi, Roberto},
+  journal={Physica D: Nonlinear Phenomena},
+  volume={143},
+  number={1--4},
+  pages={21--55},
+  year={2000},
+  doi={10.1016/S0167-2789(00)00095-6}
+}
+
+@article{lancellotti2005,
+  title={On the {V}lasov limit for systems of nonlinearly coupled oscillators without noise},
+  author={Lancellotti, Carlo},
+  journal={Transport Theory and Statistical Physics},
+  volume={34},
+  number={7},
+  pages={523--535},
+  year={2005},
+  doi={10.1080/00411450508951152}
+}
+
+@article{mirollo2007,
+  title={The spectrum of the partially locked state for the {K}uramoto model},
+  author={Mirollo, Renato and Strogatz, Steven H.},
+  journal={Journal of Nonlinear Science},
+  volume={17},
+  number={4},
+  pages={309--347},
+  year={2007},
+  doi={10.1007/s00332-006-0806-x}
+}
+
+@article{ott2008,
+  title={Low dimensional behavior of large systems of globally coupled oscillators},
+  author={Ott, Edward and Antonsen, Thomas M.},
+  journal={Chaos: An Interdisciplinary Journal of Nonlinear Science},
+  volume={18},
+  number={3},
+  pages={037113},
+  year={2008},
+  doi={10.1063/1.2930766}
+}
+
+@article{chiba2015,
+  title={A proof of the {K}uramoto conjecture for a bifurcation structure of the infinite-dimensional {K}uramoto model},
+  author={Chiba, Hayato},
+  journal={Ergodic Theory and Dynamical Systems},
+  volume={35},
+  number={3},
+  pages={762--834},
+  year={2015},
+  doi={10.1017/etds.2013.68}
+}
+
+@article{fernandez2016,
+  title={Landau damping in the {K}uramoto model},
+  author={Fernandez, Bastien and G{\'e}rard-Varet, David and Giacomin, Giambattista},
+  journal={Annales Henri Poincar{\'e}},
+  volume={17},
+  number={7},
+  pages={1793--1823},
+  year={2016},
+  doi={10.1007/s00023-015-0450-9}
+}
+
+@article{dietert2016,
+  title={Stability and bifurcation for the {K}uramoto model},
+  author={Dietert, Helge},
+  journal={Journal de Math{\'e}matiques Pures et Appliqu{\'e}es},
+  volume={105},
+  number={4},
+  pages={451--489},
+  year={2016},
+  doi={10.1016/j.matpur.2015.11.001}
+}
+
+```
