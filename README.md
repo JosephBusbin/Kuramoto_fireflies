@@ -109,8 +109,9 @@ manim -pqh kuramoto_led_firesync_bifurcation.py LedFiresyncBifurcation
 #### 5. Commands To Generate .png Files Of Ending Frames
 
 ```bash
+# general form
 manim -sqh <script_name.py> <SceneClassName>
-
+# for each script
 manim -sqh kuramoto_ord_par_sim.py InfiniteKuramotoOrderParameter
 
 manim -sqh kuramoto_ord_par_sim.py InfiniteKuramotoOrderParameterIncoherence

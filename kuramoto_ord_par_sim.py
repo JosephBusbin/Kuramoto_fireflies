@@ -38,7 +38,7 @@ class InfiniteKuramotoOrderParameter(Scene): # Incoherent -> Coherent
     def construct(self) -> None:
         # set values for the solving of the order parameter and solve it
         k_coupling = 4.0
-        gamma = 1.5
+        gamma = 1.0
         r0 = 0.05
         t_max = 10.0
 
@@ -78,8 +78,8 @@ class InfiniteKuramotoOrderParameterIncoherence(Scene): # Coherent -> Incoherent
     """Animate the time evolution of r(t) in the first quadrant. Starting from coherence under low coupling."""
 
     def construct(self) -> None:
-        k_coupling = 0.5
-        gamma = 1.5
+        k_coupling = 1.5
+        gamma = 1.0
         r0  = 0.95
         t_max = 10.0
 
